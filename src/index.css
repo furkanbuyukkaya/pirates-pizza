@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-600 transition-all duration-300 placeholder:text-slate-400 focus:outline-none focus:ring focus:ring-teal-500 md:px-6 md:py-3;
+  }
+
+  /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
+  .loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+  }
+  .loader::before,
+  .loader::after {
+    content: '';
+    grid-area: 1/1;
+    --c: radial-gradient(farthest-side, #25b09b 92%, #0000);
+    background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%,
+      var(--c) 0 50%;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    animation: s2 1s infinite;
+  }
+  .loader::before {
+    margin: 4px;
+    filter: hue-rotate(45deg);
+    background-size: 8px 8px;
+    animation-timing-function: linear;
+  }
+
+  @keyframes s2 {
+    100% {
+      transform: rotate(0.5turn);
+    }
+  }
+}
